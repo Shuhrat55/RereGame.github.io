@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script> 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Menu</title>
+    <style>
+        /* Стили для стартового меню */
+        .menu {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .menu button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+            margin: 10px;
+        }
+      #rec{
+      positio:absolute;
+      top: 20px;
+      left:50%;
+      font-size: 24px;
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <h2>Start Menu</h2>
+        <button id="startButton">Play</button>
+    </div>
+<div id="rec">0</div>
+    <script>
+       let rec=0;
+       const record = document.getElementById('rec');
+       var polrec=localStorage.getItem('bank');
+       record.textContent =polrec; document.getElementById('startButton').addEventListener('click', function() {
+       vkBridge.send('VKWebAppShowNativeAds', {
+  ad_format: 'interstitial' /* Тип рекламы */
+  })
+  .then( (data) => { 
+    if (data.result) {
+      // Реклама была показана
+    } else {
+      // Ошибка
+    }
+  })
+  .catch((error) => { console.log(error); });
+          });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+   <script>  
+        jQuery(document).ready(function($) 
+        {
+            vkBridge.send('VKWebAppInit'); 
+        });
+
+    </script>
+</body>
+</html>

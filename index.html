@@ -119,9 +119,9 @@
          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
      <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script> 
    <script>  
-         function save (str) 
+         function save (money,score) 
         {      
-                vkBridge.send('VKWebAppStorageSet', {key:'money',value:str}).then((data) => {if (data.result){alert(JSON.stringify(data));
+                vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){alert(JSON.stringify(data));
             }});
                 vkBridge.send('VKWebAppStorageSet', {key:'score',value:score}).then((data) => {if (data.result){alert(JSON.stringify(data));
             }}); 

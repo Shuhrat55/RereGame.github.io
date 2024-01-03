@@ -16,11 +16,10 @@
           <div id="unity-progress-bar-full"></div>
         </div>
       </div>
-      <div id="unity-warning"> </div>
-      <div id="unity-footer">
+       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">My project</div>
+        <div id="unity-build-title">GameTest</div>
       </div>
     </div>
     <script>
@@ -98,24 +97,53 @@
         canvas.style.height = "600px";
       }
 
-      loadingBar.style.display = "block";
+       loadingBar.style.display = "block";
 
-      var script = document.createElement("script");
+    var script = document.createElement("script");
+      var unityI = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
-              }).then((unityInstance) => {
-                loadingBar.style.display = "none";
-                fullscreenButton.onclick = () => {
-                  unityInstance.SetFullscreen(1);
-                };
-              }).catch((message) => {
-                alert(message);
-              });
-            };
-
+        }).then((unityInstance) => {
+          unityI = unityInstance;
+          loadingBar.style.display = "none";
+          fullscreenButton.onclick = () => {
+            unityInstance.SetFullscreen(1);
+          };
+        }).catch((message) => {
+          alert(message);
+        });
+      };
       document.body.appendChild(script);
+
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/json2/20110223/json2.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>   
+     <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script> 
+   <script>  
+         function save (money,score) 
+        {      
+                vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){alert("save");
+            }});
+                vkBridge.send('VKWebAppStorageSet', {key:'score',value:score}).then((data) => {if (data.result){
+            }}); 
+        }
+        function load()
+        {
+                   vkBridge.send('VKWebAppStorageGet',{ keys:['money']}).then((data) => { if (data.keys) {
+                     var save_money = data.keys[0].value.trim();
+                   vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
+                     var save_score = data.keys[0].value.trim();
+                     unityI.SendMessage('SysVk', 'Ms',save_money); 
+                     unityI.SendMessage('SysVk', 'Ss',save_score);
+        } });
+        } });  
+        }
+        jQuery(document).ready(function($)
+        {
+            vkBridge.send('VKWebAppInit');        
+        });
 
     </script>
   </body>

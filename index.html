@@ -135,8 +135,8 @@
                      var save_money = data.keys[0].value.trim();
                    vkBridge.send('VKWebAppStorageGet',{ keys:['score']}).then((data) => { if (data.keys) {
                      var save_score = data.keys[0].value.trim();
-                     unityInstance.SendMessage('SysVk', 'Ms',save_money); 
-                     unityInstance.SendMessage('SysVk', 'Ss',save_score);
+                     unityI.SendMessage('SysVk', 'Ms',save_money); 
+                     unityI.SendMessage('SysVk', 'Ss',save_score);
         } });
         } });  
         }

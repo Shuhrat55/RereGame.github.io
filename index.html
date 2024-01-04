@@ -124,7 +124,7 @@
    <script>  
          function save (money,score) 
         {      
-                vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){alert("save");
+                vkBridge.send('VKWebAppStorageSet', {key:'money',value:money}).then((data) => {if (data.result){
             }});
                 vkBridge.send('VKWebAppStorageSet', {key:'score',value:score}).then((data) => {if (data.result){
             }}); 

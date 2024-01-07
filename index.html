@@ -143,14 +143,14 @@
         }
         function loadreclama()
         {
-                     vkbridge.send('VKWebAppShowNativeAds', {
-                      ad_format: 'interstitial' /* Òèï ðåêëàìû */
+                     vkBridge.send('VKWebAppShowNativeAds', {
+                      ad_format: 'interstitial' /* Ã’Ã¨Ã¯ Ã°Ã¥ÃªÃ«Ã Ã¬Ã» */
                       })
                       .then( (data) => { 
                         if (data.result) {
-                          // Ðåêëàìà áûëà ïîêàçàíà
+                          // ÃÃ¥ÃªÃ«Ã Ã¬Ã  Ã¡Ã»Ã«Ã  Ã¯Ã®ÃªÃ Ã§Ã Ã­Ã 
                         } else {
-                          // Îøèáêà
+                          // ÃŽÃ¸Ã¨Ã¡ÃªÃ 
                         }
                       })
                       .catch((error) => { console.log(error); });
